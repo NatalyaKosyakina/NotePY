@@ -19,17 +19,15 @@ def createnote(note_name, text_of_note):
         f.write(text_of_note + '\n')
         f.close
 
-# Поиск файла
+# Поиск файла по названию
 def selectnote(note_name):
     result = []
     for note in listdir(path_to_notes):
         if (note_name in note):
-            print(note_name + note)
             result.append(note)
     return result
 
-selectnote('4.txt')
-
+# Поиск файла по дате.
 
 # Функция удаления файла будет в презентере.
 # Функция изменения файла (дозаписи) тоже будет в презентере: сначала ищем файл, затем читаем его, отбрасываем дату, и добавляем новый текст

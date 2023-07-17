@@ -13,7 +13,31 @@ def newnote():
 # Если совпадений несколько, выводит их названия и просит указать точнее.
 # Если совпадение одно, открывает файл. 
 
-#def selectfile(filename):
+def selectfilename():
+    flag = True
+    while flag:
+        note_name = input('Название заметки: ')
+        selectedfiles = txtfilework.selectnote(note_name)
+        if (len(selectedfiles) == 1):
+            return selectedfiles[0]
+        if (len(selectedfiles) > 1):
+           print("Найдено несколько вариантов: \n" + selectedfiles)
+           print("\nКакой нужно выбрать? ")
+        else : print("Такой заметки не найдено" + '\n')
 
 
+#def selectfiledate():
+
+
+# Выбор действия с заметкой
+def selectdoing(note_name):
+    user_input = input("Выберите действие: \n 1 Прочитать \n 2 Дополнить \n 3 Удалить \n")
+    if (user_input == 1):
+       txtfilework.readnote(note)
+    if (user_input == 2):
+       
+       print(note)
+    if (user_input == 3):
+        print(note)
+    
 # Функция удаления заметки.
