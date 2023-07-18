@@ -4,13 +4,14 @@ import consoleview
 
 flag = True
 while (flag):
-    user_input = int(input('Выберите действие: \n 1 Добавление новой заметки \n 2 Поиск заметки по названию \n 3 Поиск заметки по дате \n 4 Выход \n'))
+    user_input = int(input('Выберите действие: \n 1 Добавление новой заметки \n 2 Поиск заметки по названию \n 3 Поиск по содержимому \n 4 Список всех заметок \n 0 Выход \n'))
+    if (user_input == 0):
+       flag = False
     if (user_input == 1):
        consoleview.newnote()
     if (user_input == 2):
        note = consoleview.selectfilename()
        consoleview.selectdoing(note)
     if (user_input == 3):
-       print(3)    
-    if (user_input == 4):
-       flag = False
+       note = consoleview.selectfiledate()
+       consoleview.selectdoing(note)   
