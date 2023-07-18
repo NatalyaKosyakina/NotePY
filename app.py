@@ -9,7 +9,7 @@ while (flag):
        consoleview.newnote()
     if (user_input == 2):
        note = consoleview.selectfilename()
-       print(note)
+       consoleview.selectdoing(note)
     if (user_input == 3):
        print(3)    
     if (user_input == 4):

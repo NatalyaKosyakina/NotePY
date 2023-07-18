@@ -1,3 +1,5 @@
+import os
+import datetime
 from os import listdir
 
 
@@ -5,7 +7,7 @@ path_to_notes = r'notesfolder/'
 # Функция для чтения записки по номеру файла. 
 # Принимает номер файла, по идее должна возвращать прочитанную строку.
 def readnote(note_name):
-    file_path = path_to_notes + str(note_name) + '.txt'   
+    file_path = path_to_notes + str(note_name)   
     with open(file_path, 'r') as f:
         return(f.read())
         f.close
@@ -30,4 +32,6 @@ def selectnote(note_name):
 # Поиск файла по дате.
 
 # Функция удаления файла будет в презентере.
+def delnote(note_name):
+    os.remove(path_to_notes + note_name)
 # Функция изменения файла (дозаписи) тоже будет в презентере: сначала ищем файл, затем читаем его, отбрасываем дату, и добавляем новый текст

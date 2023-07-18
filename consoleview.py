@@ -31,13 +31,16 @@ def selectfilename():
 
 # Выбор действия с заметкой
 def selectdoing(note_name):
-    user_input = input("Выберите действие: \n 1 Прочитать \n 2 Дополнить \n 3 Удалить \n")
-    if (user_input == 1):
-       txtfilework.readnote(note)
-    if (user_input == 2):
-       
-       print(note)
-    if (user_input == 3):
-        print(note)
+    doing = input("Выберите действие: \n 1 Прочитать \n 2 Дополнить \n 3 Удалить \n")
+    if (doing == '1'):
+        txtfilework.readnote(note_name)
+    if (doing == '2'):
+        print(note_name) #заглушка
+    if (doing == '3'):
+        doing = input(f"Удалить заметку {note_name}? \n 1 Да \n 2 Нет \n")
+        if (doing == '1'):
+            txtfilework.delnote(note_name)
+            printf("Готово")
+                
+            
     
-# Функция удаления заметки.
