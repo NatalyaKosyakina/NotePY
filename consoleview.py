@@ -31,16 +31,19 @@ def selectfilename():
 
 # Выбор действия с заметкой
 def selectdoing(note_name):
-    doing = input("Выберите действие: \n 1 Прочитать \n 2 Дополнить \n 3 Удалить \n")
+    doing = input("Выберите действие: \n 1 Прочитать \n 2 Дополнить \n 3 Заменить 4 Удалить \n")
     if (doing == '1'):
         print(txtfilework.readnote(note_name))
     if (doing == '2'):
-        print(note_name) #заглушка
+        print(txtfilework.readnote(note_name))
+        print("Для завершения редактирования введите END")
+        txtfilework.editnote(note_name) #заглушка
     if (doing == '3'):
         doing = input(f"Удалить заметку {note_name}? \n 1 Да \n 2 Нет \n")
         if (doing == '1'):
             txtfilework.delnote(note_name)
-            printf("Готово")
+            print("Готово")
                 
             
-    
+# Редактирование заметки (дополнение?). Должно открывать заметку для чтения 
+
