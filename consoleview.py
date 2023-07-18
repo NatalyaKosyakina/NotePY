@@ -21,7 +21,7 @@ def selectfilename():
         if (len(selectedfiles) == 1):
             return selectedfiles[0]
         if (len(selectedfiles) > 1):
-           print("Найдено несколько вариантов: \n" + selectedfiles)
+           print("Найдено несколько вариантов: \n" + str(selectedfiles))
            print("\nКакой нужно выбрать? ")
         else : print("Такой заметки не найдено" + '\n')
 
@@ -33,7 +33,7 @@ def selectfilename():
 def selectdoing(note_name):
     doing = input("Выберите действие: \n 1 Прочитать \n 2 Дополнить \n 3 Удалить \n")
     if (doing == '1'):
-        txtfilework.readnote(note_name)
+        print(txtfilework.readnote(note_name))
     if (doing == '2'):
         print(note_name) #заглушка
     if (doing == '3'):
