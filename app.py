@@ -14,4 +14,5 @@ while (flag):
        consoleview.selectdoing(note)
     if (user_input == 3):
        note = consoleview.selectfiledate()
-       consoleview.selectdoing(note)   
+       if (note != None):
+         consoleview.selectdoing(note)   

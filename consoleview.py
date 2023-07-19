@@ -1,18 +1,18 @@
-import txtfilework
+import filework
 
 # Функция создания заметки. Памятка: обязательно добавить проверку на наличие такой заметки!
 def newnote():
     note_name = input('Введите название заметки' + '\n')
     # Тут должна быть проверка на наличие заметки с таким именем и сообщение, что такая заметка уже есть.
     # Хотите отредактировать? Да - редактирование, нет - замена.
-    selectedfiles = txtfilework.selectnote(note_name)
+    selectedfiles = filework.selectnote(note_name)
     if (len(selectedfiles) == 1):
         print('Заметка с таким именем уже существует \n')
         selectdoing(selectedfiles[0])
     else :
         text_of_note = inputlongtext()
-        txtfilework.writenote((note_name + '.txt'), text_of_note)
-        txtfilework.regnote(note_name)
+        filework.writenote((note_name + '.txt'), text_of_note)
+        filework.regnote(note_name)
 
 # Функция поиска заметки по имени. Принимает название (приблизительно). Сверяет со списком файлов, сохраненных в папке. 
 # Если совпадений нет, выводит сообщение, просит ввести данные повторно. 
@@ -22,7 +22,7 @@ def newnote():
 def selectfilename():
     while True:
         note_name = input('Название заметки: ')
-        selectedfiles = txtfilework.selectnote(note_name)
+        selectedfiles = filework.selectnote(note_name)
         if (len(selectedfiles) == 1):
             return selectedfiles[0]
         if (len(selectedfiles) > 1):
@@ -32,8 +32,8 @@ def selectfilename():
 
 
 def selectfiledate():
-    note_name = input('Искомый текст: ')
-    selectedfiles = txtfilework.searchinnote(note_name)
+    target_text = input('Искомый текст: ')
+    selectedfiles = filework.searchinnote(target_text)
     if (len(selectedfiles) == 1):
         return selectedfiles[0]
     if (len(selectedfiles) > 1):
@@ -47,17 +47,18 @@ def selectfiledate():
 def selectdoing(note_name):
     doing = input("Выберите действие: \n 1 Прочитать \n 2 Дополнить \n 3 Заменить \n 4 Удалить \n")
     if (doing == '1'):
-        print(txtfilework.readnote(note_name))
+        print(
+filework.readnote(note_name))
     if (doing == '2'):
-        text = txtfilework.readnote(note_name)
+        text = filework.readnote(note_name)
         print(text)
         adding = inputlongtext()
         text += adding
-        txtfilework.writenote(note_name, text)
+        filework.writenote(note_name, text)
     if (doing == '4'):
         doing = input(f"Удалить заметку {note_name}? \n 1 Да \n 2 Нет \n")
         if (doing == '1'):
-            txtfilework.delnote(note_name)
+            filework.delnote(note_name)
             print("Готово")
                 
             
