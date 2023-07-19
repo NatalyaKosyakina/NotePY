@@ -28,20 +28,20 @@ def selectfiledate():
     target_text = input('Искомый текст: ')
     selectedfiles = filework.searchinnote(target_text)
     if (len(selectedfiles) == 1):
-        return selectedfiles[0]
+        return str(selectedfiles[0])
     if (len(selectedfiles) > 1):
         print("Найдено несколько вариантов: \n" + str(selectedfiles))
         print("\nКакой нужно выбрать? ")
-        selectfilename()
+        return selectfilename()
     else : print("Такой заметки не найдено" + '\n')
 
 
 # Выбор действия с заметкой
 def selectdoing(note_name):
+    print(note_name)
     doing = input("Выберите действие: \n 1 Прочитать \n 2 Дополнить \n 3 Заменить \n 4 Удалить \n")
     if (doing == '1'):
-        print(
-filework.readnote(note_name))
+        print(filework.readnote(note_name))
     if (doing == '2'):
         text = filework.readnote(note_name)
         print(text)
@@ -62,8 +62,16 @@ def showall():
 
 # Поиск заметки по дате
 def searchdate():
-    target = input("Укажите дату в формате дд.мм чч.мм.сс: \n")
-    
+    target = input("Укажите дату в формате дд.мм чч.мм.сс (можно частично): \n")
+    selectedfiles = filework.searchdate(target)
+    if (len(selectedfiles) == 1):
+        temp = str(selectedfiles.values()).removeprefix("dict_values(['").removesuffix("'])")
+        return temp
+    if (len(selectedfiles) > 1):
+        print("Найдено несколько вариантов: \n" + str(selectedfiles))
+        print("\nКакой нужно выбрать? ")
+        return selectfilename()
+    else : print("Такой заметки не найдено" + '\n')
             
 
 
@@ -80,9 +88,9 @@ def inputlongtext():
             longtext += adding + '\n'
     return longtext
 
-# Вспомогательная функция: найдено несколько вариантов, какой выбрать.
-    #  target - строка, что спрашиваем у пользователя
-    #  func - функция поиска, которая вернет лист.
+
+def wronginput():
+    print("Нет такой команды")
 
 def chosenote(selectedfiles):
     if (len(selectedfiles) == 1):

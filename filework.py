@@ -4,8 +4,8 @@ from os import listdir
 
 
 path_to_notes = r'notesfolder/'
-# path_to_list_of_notes = r'noteslist.json'
-time_format = r'%m.%d %H:%M:%S'
+time_format = r'%d.%m %H:%M:%S'
+
 # Функция для чтения записки по номеру файла. 
 def readnote(note_name):
     file_path = path_to_notes + str(note_name)   
@@ -18,7 +18,6 @@ def writenote(note_name, text_of_note):
     file_path = path_to_notes + str(note_name)
     # date_of_change = datetime.datetime.now().strftime(time_format)
     with open(file_path, 'w') as f:
-        f.write(date_of_change + '\n')
         f.write(text_of_note + '\n')
         f.close
     
@@ -32,12 +31,13 @@ def selectnote(note_name):
     return result
 
 # Поиск файла по дате.
-def searchdate():
-    all_notes = getallnotes()
-    result = []
-    for note in all_notes:
-        if target in note:
-            result.append(note)
+def searchdate(target):
+    result = {}
+    for note in listdir(path_to_notes):
+        t = os.path.getmtime(path_to_notes + str(note))
+        t = str(datetime.datetime.fromtimestamp(t).strftime(time_format))
+        if target in t:
+            result[t] = note
     return result
 
 # Функция удаления файла
@@ -56,9 +56,7 @@ def searchinnote(target_text):
     return result 
 
 def getallnotes():
-    result = {}
+    result = []
     for note in listdir(path_to_notes):
-        t = os.path.getmtime(path_to_notes + str(note))
-        t = str(datetime.datetime.fromtimestamp(t).strftime(time_format))
-        result[note] = t
+        result.append(note)
     return result    
