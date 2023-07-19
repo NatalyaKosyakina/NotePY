@@ -92,11 +92,3 @@ def inputlongtext():
 def wronginput():
     print("Нет такой команды")
 
-def chosenote(selectedfiles):
-    if (len(selectedfiles) == 1):
-        return selectedfiles[0]
-    if (len(selectedfiles) > 1):
-        print("Найдено несколько вариантов: \n" + str(selectedfiles))
-        print("\nКакой нужно выбрать? ")
-        selectfilename()
-    else : print("Такой заметки не найдено" + '\n')
