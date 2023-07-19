@@ -1,24 +1,18 @@
 import filework
 
-# Функция создания заметки. Памятка: обязательно добавить проверку на наличие такой заметки!
+# Функция создания заметки.
 def newnote():
     note_name = input('Введите название заметки' + '\n')
-    # Тут должна быть проверка на наличие заметки с таким именем и сообщение, что такая заметка уже есть.
-    # Хотите отредактировать? Да - редактирование, нет - замена.
     selectedfiles = filework.selectnote(note_name)
     if (len(selectedfiles) == 1):
         print('Заметка с таким именем уже существует \n')
         selectdoing(selectedfiles[0])
     else :
         text_of_note = inputlongtext()
-        filework.writenote((note_name + '.txt'), text_of_note)
-        filework.regnote(note_name)
+        filework.writenote((note_name + '.json'), text_of_note)
+        # filework.regnote(note_name)
 
-# Функция поиска заметки по имени. Принимает название (приблизительно). Сверяет со списком файлов, сохраненных в папке. 
-# Если совпадений нет, выводит сообщение, просит ввести данные повторно. 
-# Если совпадений несколько, выводит их названия и просит указать точнее.
-# Если совпадение одно, открывает файл. 
-
+# Функция поиска заметки по имени.
 def selectfilename():
     while True:
         note_name = input('Название заметки: ')
@@ -62,7 +56,10 @@ filework.readnote(note_name))
             print("Готово")
                 
             
-# Редактирование заметки (дополнение?). Должно открывать заметку для чтения 
+# Список всех заметок.
+def showall():
+    all_notes = filework.getallnotes()
+    print(all_notes)
 
 # Вспомогательная функция: ввод текста заметки построчно.
 def inputlongtext():
