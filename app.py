@@ -4,7 +4,7 @@ import consoleview
 
 flag = True
 while (flag):
-    user_input = int(input('Выберите действие: \n 1 Добавление новой заметки \n 2 Поиск заметки по названию \n 3 Поиск по содержимому \n 4 Список всех заметок \n 0 Выход \n'))
+    user_input = int(input('Выберите действие: \n 1 Добавление новой заметки \n 2 Поиск заметки по названию \n 3 Поиск по содержимому \n 4 Список всех заметок \n 5 Поиск заметки по дате \n 0 Выход \n'))
     if (user_input == 0):
        flag = False
     if (user_input == 1):
@@ -17,4 +17,6 @@ while (flag):
        if (note != None):
          consoleview.selectdoing(note)
     if (user_input == 4):
-       consoleview.showall()  
+       consoleview.showall()
+    if (user_input == 5):
+       consoleview.showall()   

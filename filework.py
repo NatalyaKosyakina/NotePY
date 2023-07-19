@@ -5,7 +5,7 @@ from os import listdir
 
 path_to_notes = r'notesfolder/'
 # path_to_list_of_notes = r'noteslist.json'
-time_format = r'%m.%d.%Y %H:%M:%S'
+time_format = r'%m.%d %H:%M:%S'
 # Функция для чтения записки по номеру файла. 
 def readnote(note_name):
     file_path = path_to_notes + str(note_name)   
@@ -32,18 +32,17 @@ def selectnote(note_name):
     return result
 
 # Поиск файла по дате.
+def searchdate():
+    all_notes = getallnotes()
+    result = []
+    for note in all_notes:
+        if target in note:
+            result.append(note)
+    return result
 
 # Функция удаления файла
 def delnote(note_name):
     os.remove(path_to_notes + note_name)
-# Функция изменения файла (дозаписи) тоже будет в презентере: сначала ищем файл, затем читаем его, отбрасываем дату, и добавляем новый текст
-# Вспомогательная функция: при создании файла нужна регистрация во вспомогательном файле notelist, чтоб потом искать данные было проще.
-# def regnote(note_name):
-#     date_of_change = datetime.datetime.now().strftime(time_format)
-#     with open(path_to_list_of_notes, 'a') as f:
-#         f.write('\n{ "' + note_name + '": ')
-#         f.write('"' + date_of_change + '"}')
-#         f.close
 
 # Вспомогательная функция поиска информации в файле:
 def searchinnote(target_text):

@@ -10,7 +10,6 @@ def newnote():
     else :
         text_of_note = inputlongtext()
         filework.writenote((note_name + '.json'), text_of_note)
-        # filework.regnote(note_name)
 
 # Функция поиска заметки по имени.
 def selectfilename():
@@ -61,6 +60,13 @@ def showall():
     all_notes = filework.getallnotes()
     print(all_notes)
 
+# Поиск заметки по дате
+def searchdate():
+    target = input("Укажите дату в формате дд.мм чч.мм.сс: \n")
+    
+            
+
+
 # Вспомогательная функция: ввод текста заметки построчно.
 def inputlongtext():
     print("Введите текст заметки. Для завершения введите END на отдельной строке")
@@ -73,3 +79,16 @@ def inputlongtext():
         else: 
             longtext += adding + '\n'
     return longtext
+
+# Вспомогательная функция: найдено несколько вариантов, какой выбрать.
+    #  target - строка, что спрашиваем у пользователя
+    #  func - функция поиска, которая вернет лист.
+
+def chosenote(selectedfiles):
+    if (len(selectedfiles) == 1):
+        return selectedfiles[0]
+    if (len(selectedfiles) > 1):
+        print("Найдено несколько вариантов: \n" + str(selectedfiles))
+        print("\nКакой нужно выбрать? ")
+        selectfilename()
+    else : print("Такой заметки не найдено" + '\n')
