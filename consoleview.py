@@ -48,6 +48,10 @@ def selectdoing(note_name):
         adding = inputlongtext()
         text += adding
         filework.writenote(note_name, text)
+    if (doing == "3"):
+        text = filework.readnote(note_name)
+        print(text)
+        filework.writenote(note_name, inputlongtext())
     if (doing == '4'):
         doing = input(f"Удалить заметку {note_name}? \n 1 Да \n 2 Нет \n")
         if (doing == '1'):
